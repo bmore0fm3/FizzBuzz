@@ -36,6 +36,22 @@ footer .social>a:hover{
     color: var(--secondary-color);
 }
 
+.Fizz{
+    font-weight: bold;
+    color: skyblue;
+}
+
+.Buzz{
+    font-weight: bold;
+    color: var(--secondary-color);
+
+}
+
+.FizzBuzz{
+    font-weight: bold;
+    color: red;
+}
+
 .bsicon{
     color: purple;
 }

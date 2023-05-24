@@ -54,8 +54,44 @@
 
     <!-- === Main Section === -->
     <main class="flex-shrink-0">
-        <div class="container mt-5">
+        <div class="container mt-5"> 
+            <div class="row row-cols-1 row-cols-lg-2">
+                <div class="col col-lg-4 border-end border-2">
+                    <h1>FizzBuzz: A Coding Project</h1>
+                    <h4 class="lead">
+                        A javascript coding excercise using loops. Write a program that prints the numbers from 1-100 and for multiples of 3 display
+                        fizz instead of the number and for multiples of 5 display buzz. If the number is a multiple of both display FizzBuzz.
+                    </h4>
 
+                    <h3 class="mt-5 border-bottom border-2">Instructions</h3>
+                    <p>Enter a starting value and ending value. Press the button and the values will appear.</p>
+                </div>
+                <div class="col col-lg-8">
+                    <h5>Enter Values</h5>
+                    <form class="row gy-2 gx-3">
+                        <div class="col">
+                            <input id="startValue" type="number" class="form-control" placeholder="Start Value" value=0 aria-label="Start Value">
+                        </div>
+
+                        <div class="col">
+                            <input id="endValue" type="number" class="form-control" placeholder="End Value" value=100 aria-label="End Value">
+                        </div>
+
+                        <div class="col-12">
+                            <button id="btnSubmit" type="button" class="btn btn-dark btn-lg">Show FizzBuzz</button>
+                        </div>
+                    </form>
+
+                    <h2 class="mt-5 border-bottom border-2">Results</h2>
+                    <div class="table-responsive">
+                        <table class="table table-striped table-sm">
+                            <tbody id="results">
+                                <!--Results go here-->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
         </div>
     </main>
     <!-- ===Footer Section=== -->
@@ -63,7 +99,10 @@
             <div class="container-fluid">
                 <div class="row row-cols-1 row-cols-lg-3 gy-2">
                     <div class="col order-last order-lg-first text-light">
-                        <div><span class="text-muted">&copy;2023</span> DeLander Collins Jr. | delander.collins@me.com</div>
+                        <div>
+                            <span class="text-muted">&copy;<script>document.write(new Date().getFullYear());</script></span>
+                            DeLander Collins Jr. | delander.collins@me.com
+                        </div>
                     </div>
                     <div class="col d-flex align-items-center justify-content-start justify-content-lg-center">
                         <img src="/img/BlackGreyLogo.png" alt="DeLander Collins Logo" height="30">
@@ -84,6 +123,9 @@
             integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous">
     </script>
     <script src="/js/site.js"></script>
+    <script>
+        document.getElementById("btnSubmit").addEventListener("click", getValues);
+    </script>
    
 
 </body>

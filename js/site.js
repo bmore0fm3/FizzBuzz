@@ -76,23 +76,4 @@ function displayNumbers(numbers) {
         tableBody.appendChild(tableRow);
         
     }
-
-    // let templateRows = " ";
-    // for (let index = 0; index < numbers.length; index++) {
-    //     let number = numbers[index];
-
-    //     let className = " ";
-
-    //     if (number === "FizzBuzz") {
-    //         className = "FizzBuzz";
-    //     } else if (number === "Fizz") {
-    //         className = "Fizz";
-    //     } else if (number === "Buzz") {
-    //         className = "Buzz";
-    //     } 
-
-    //     templateRows += `<tr><td class=${className}>${number}</td></tr>`
-    //     //templateRows += `&lt;tr>lt;td class=${className}>${number}&lt;/td>&lt;/tr>`
-    // }
-    // document.getElementById("results").innerHTML = templateRows;
 }

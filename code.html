@@ -58,84 +58,120 @@
     <!-- === Main Section === -->
     <main class="flex-shrink-0">
         <div class="container py-5 px-5">
-            <h2 class="border-1 border-bottom border-dark py-3">The Code for APPNAME</h2>
+            <h2 class="border-1 border-bottom border-dark py-3">The Code for FizzBuzz</h2>
             <div class="row row-cols-1 row-cols-md-lg-2">
                 <div class="col-lg-8">
                     <pre class="line-numbers">
                         <code class="language-javascript">
-//Controller Function 
-function getValues() {
-    //Get values from the page
-    let startValue = document.getElementById("startValue").value;
-    let endValue = document.getElementById("endValue").value;
-
-    //parse strings into ints
-    startValue = parseInt(startValue);
-    endValue = parseInt(endValue);
-
-    if (Number.isInteger(startValue) && Number.isInteger(endValue)) {
-        //call fizzbuzz 
-        let numbers = fizzBuzz(startValue, endValue);
-
-        //call display numbers
-        displayNumbers(numbers);
-
-    } else {
-        alert("Number must be an integer");
-    }
-}
-
-
-//Logic Function
-function fizzBuzz(startValue, endValue) {
-    let numbers = []; 
-    
-    //put the numbers into an array
-    for (let index = startValue; index <= endValue; index++) {
-
-        if ((index % 3 === 0) && (index % 5 === 0)) {
-            numbers.push("FizzBuzz");
-        }else if (index % 3 === 0) {
-            numbers.push("Fizz");
-        } else if (index % 5 === 0) {
-            numbers.push("Buzz");
-        } else {
-            numbers.push(index);
-        }
-        
-    }
-    return numbers;
-}
-
-
-//Display Function 
-function displayNumbers(numbers) {
-    let templateRows = " ";
-    for (let index = 0; index < numbers.length; index++) {
-        let number = numbers[index];
-
-        let className = " ";
-
-        if (number === "FizzBuzz") {
-            className = "FizzBuzz";
-        } else if (number === "Fizz") {
-            className = "Fizz";
-        } else if (number === "Buzz") {
-            className = "Buzz";
-        } 
-        
-        templateRows += `&lt;tr>&lt;td class=${className}>${number}&lt;/td>&lt;/tr>`
-    }
-    document.getElementById("results").innerHTML = templateRows;
-}
+                            //Controller Function 
+                            function getValues() {
+                                //Get values from the page
+                                let startValue = document.getElementById("startValue").value;
+                                let endValue = document.getElementById("endValue").value;
+                            
+                                //parse strings into ints
+                                startValue = parseInt(startValue);
+                                endValue = parseInt(endValue);
+                            
+                                if (Number.isInteger(startValue) && Number.isInteger(endValue)) {
+                                    //call fizzbuzz 
+                                    let numbers = fizzBuzz(startValue, endValue);
+                            
+                                    //call display numbers
+                                    displayNumbers(numbers);
+                            
+                                } else {
+                                    alert("Number must be an integer");
+                                }
+                            }
+                            
+                            //Logic Function
+                            function fizzBuzz(startValue, endValue) {
+                                let numbers = []; 
+                                
+                                //put the numbers into an array
+                                for (let index = startValue; index <= endValue; index++) {
+                            
+                                    if ((index % 3 === 0) && (index % 5 === 0)) {
+                                        numbers.push("FizzBuzz");
+                                    }else if (index % 3 === 0) {
+                                        numbers.push("Fizz");
+                                    } else if (index % 5 === 0) {
+                                        numbers.push("Buzz");
+                                    } else {
+                                        numbers.push(index);
+                                    }
+                                    
+                                }
+                                return numbers;
+                            }
+                            
+                            
+                            //Display Function 
+                            function displayNumbers(numbers) {
+                            
+                                //Get the table body element from the page 
+                                let tableBody = document.getElementById("results");
+                            
+                                //get the template row
+                                let templateRow = document.getElementById("fbTemplate");
+                            
+                                //clear the table first
+                                tableBody.innerHTML = ""; 
+                                
+                                for (let index = 0; index < numbers.length; index += 5) {
+                                    let tableRow =  document.importNode(templateRow.content, true);
+                            
+                                    let rowCols = tableRow.querySelectorAll("td");
+                                    rowCols[0].textContent = numbers[index];
+                                    rowCols[0].classList.add(numbers[index]);
+                            
+                                    rowCols[1].textContent = numbers[index + 1];
+                                    rowCols[1].classList.add(numbers[index + 1]);
+                            
+                                    rowCols[2].textContent = numbers[index + 2];
+                                    rowCols[2].classList.add(numbers[index + 2]);
+                            
+                                    rowCols[3].textContent = numbers[index + 3];
+                                    rowCols[3].classList.add(numbers[index + 3]);
+                            
+                                    rowCols[4].textContent = numbers[index + 4];
+                                    rowCols[4].classList.add(numbers[index + 4]);
+                                    
+                                    tableBody.appendChild(tableRow);
+                                    
+                                }
+                            }
                         </code>
                     </pre>
                 </div>
                 <div class="col-lg-4">
-                    <p> The code is structurd in one function</p>
-                    <h5>Hello World!</h5>
-                    <p>Hello World is a function that displays an alert with a message of Hello World!</p>
+                    <p> The code is structured in three functions</p>
+                    <h5>getValues()</h5>
+                    <p>
+                        The getvalues function is a controller function. It captures the user input. It captures the startValue and endValue value from the 
+                        DOM by elementID. Next, the function ensures that the input is a valid integer. If the integer is invalid the user is 
+                        presented an alert. Then, getValues calls the fizzBuzz function before calling the displayNumbers function. 
+                    </p>
+
+                    <h5>fizzBuzz()</h5>
+                    <p>
+                        Function fizzBuzz is the logic function that takes the startValue and endValue as input. It starts by creating the numbers 
+                        array. In the for loop, a series of checks are done. If the index is divisible by three and five then 'FizzBuzz' is pushed
+                        to the numbers array. If the index is only divisible by three then 'Fizz' is pushed to the array. If the index is only divisible 
+                        by five then 'Buzz' is pushed to the numbers array. Finally, if all the previous checks are false, the index number itself is 
+                        pushed to the numbers array. The numbers array is then passed back to the calling function.  
+                    </p>
+
+                    <h5>displayNumbers()</h5>
+                    <p>
+                        The displayNumbers function is a display function. Initially, the function captures the tablebody element as well as the 
+                        templaterow. In the for loop, we copy a fragment of the document then use the query selector to capture all of the td elements 
+                        and save it in rowCols. Next, the function updates the rows as well add the class for the data. Finally the items are appended 
+                        to tableBody. 
+                    </p>
                 </div>
+
             </div>
         </div>
     </main>

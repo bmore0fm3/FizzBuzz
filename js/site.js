@@ -20,7 +20,6 @@ function getValues() {
     }
 }
 
-
 //Logic Function
 function fizzBuzz(startValue, endValue) {
     let numbers = []; 
@@ -45,22 +44,55 @@ function fizzBuzz(startValue, endValue) {
 
 //Display Function 
 function displayNumbers(numbers) {
-    let templateRows = " ";
-    for (let index = 0; index < numbers.length; index++) {
-        let number = numbers[index];
 
-        let className = " ";
+    //Get the table body element from the page 
+    let tableBody = document.getElementById("results");
 
-        if (number === "FizzBuzz") {
-            className = "FizzBuzz";
-        } else if (number === "Fizz") {
-            className = "Fizz";
-        } else if (number === "Buzz") {
-            className = "Buzz";
-        } 
+    //get the template row
+    let templateRow = document.getElementById("fbTemplate");
 
-        templateRows += `<tr><td class=${className}>${number}</td></tr>`
-        //templateRows += `&lt;tr>lt;td class=${className}>${number}&lt;/td>&lt;/tr>`
+    //clear the table first
+    tableBody.innerHTML = ""; 
+    
+    for (let index = 0; index < numbers.length; index += 5) {
+        let tableRow =  document.importNode(templateRow.content, true);
+
+        let rowCols = tableRow.querySelectorAll("td");
+        rowCols[0].textContent = numbers[index];
+        rowCols[0].classList.add(numbers[index]);
+
+        rowCols[1].textContent = numbers[index + 1];
+        rowCols[1].classList.add(numbers[index + 1]);
+
+        rowCols[2].textContent = numbers[index + 2];
+        rowCols[2].classList.add(numbers[index + 2]);
+
+        rowCols[3].textContent = numbers[index + 3];
+        rowCols[3].classList.add(numbers[index + 3]);
+
+        rowCols[4].textContent = numbers[index + 4];
+        rowCols[4].classList.add(numbers[index + 4]);
+        
+        tableBody.appendChild(tableRow);
+        
     }
-    document.getElementById("results").innerHTML = templateRows;
+
+    // let templateRows = " ";
+    // for (let index = 0; index < numbers.length; index++) {
+    //     let number = numbers[index];
+
+    //     let className = " ";
+
+    //     if (number === "FizzBuzz") {
+    //         className = "FizzBuzz";
+    //     } else if (number === "Fizz") {
+    //         className = "Fizz";
+    //     } else if (number === "Buzz") {
+    //         className = "Buzz";
+    //     } 
+
+    //     templateRows += `<tr><td class=${className}>${number}</td></tr>`
+    //     //templateRows += `&lt;tr>lt;td class=${className}>${number}&lt;/td>&lt;/tr>`
+    // }
+    // document.getElementById("results").innerHTML = templateRows;
 }

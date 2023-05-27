@@ -9,8 +9,8 @@ function getValues() {
     endValue = parseInt(endValue);
 
     if (Number.isInteger(startValue) && Number.isInteger(endValue)) {
-        //call generate numbers
-        let numbers = generateNumbers(startValue, endValue);
+        //call fizzbuzz 
+        let numbers = fizzBuzz(startValue, endValue);
 
         //call display numbers
         displayNumbers(numbers);
@@ -22,12 +22,22 @@ function getValues() {
 
 
 //Logic Function
-function generateNumbers(startValue, endValue) {
+function fizzBuzz(startValue, endValue) {
     let numbers = []; 
     
     //put the numbers into an array
     for (let index = startValue; index <= endValue; index++) {
-        numbers.push(index);
+
+        if ((index % 3 === 0) && (index % 5 === 0)) {
+            numbers.push("FizzBuzz");
+        }else if (index % 3 === 0) {
+            numbers.push("Fizz");
+        } else if (index % 5 === 0) {
+            numbers.push("Buzz");
+        } else {
+            numbers.push(index);
+        }
+        
     }
     return numbers;
 }
@@ -41,16 +51,14 @@ function displayNumbers(numbers) {
 
         let className = " ";
 
-        if ((number % 3 === 0) && (number % 5 === 0) && (number != 0)) {
+        if (number === "FizzBuzz") {
             className = "FizzBuzz";
-            number = "FizzBuzz";
-        }else if ((number % 3 === 0) && (number != 0)) {
+        } else if (number === "Fizz") {
             className = "Fizz";
-            number = "Fizz";
-        } else if ((number % 5 === 0) && (number != 0)) {
+        } else if (number === "Buzz") {
             className = "Buzz";
-            number = "Buzz";
         } 
+
         templateRows += `<tr><td class=${className}>${number}</td></tr>`
         //templateRows += `&lt;tr>lt;td class=${className}>${number}&lt;/td>&lt;/tr>`
     }
